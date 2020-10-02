@@ -2,6 +2,8 @@ language: java
 jdk: oraclejdk11
 dist: trusty
 
+before_install: cd eweather-api
+
 install: true
 script: mvn clean install
 
