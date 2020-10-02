@@ -1,7 +1,7 @@
-# Eweather-API
-API to call Eweather
 [![Build Status](https://travis-ci.com/ErwanLT/Eweather-API.svg?branch=main)](https://travis-ci.com/ErwanLT/Eweather-API)
 [![codecov](https://codecov.io/gh/ErwanLT/Eweather-API/branch/main/graph/badge.svg?token=L3LMtknX9P)](undefined)
+# Eweather-API
+API to call Eweather
 
 - swagger-ui : http://localhost:8080/swagger-ui.html
 
