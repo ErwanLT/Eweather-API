@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6d16f1e875f4a3594af137e29465ca4)](https://app.codacy.com/gh/ErwanLT/Eweather-API?utm_source=github.com&utm_medium=referral&utm_content=ErwanLT/Eweather-API&utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.com/ErwanLT/Eweather-API.svg?branch=main)](https://travis-ci.com/ErwanLT/Eweather-API)
 [![codecov](https://codecov.io/gh/ErwanLT/Eweather-API/branch/main/graph/badge.svg?token=L3LMtknX9P)](undefined)
 # Eweather-API
