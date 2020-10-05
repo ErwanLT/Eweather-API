@@ -41,11 +41,7 @@ public class EweatherAPIController {
             @ApiResponse(code = 500, message = "An error occured")
     }
     )
-    public ResponseEntity getWeather(@RequestParam(name = "location", required = true) String location) {
-        try {
-            return new ResponseEntity(weatherService.getForecast(location), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity getWeather(@RequestParam(name = "location") String location) throws Exception {
+        return new ResponseEntity(weatherService.getForecast(location), HttpStatus.OK);
     }
 }

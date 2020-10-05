@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import fr.eletutour.eweather.dto.Forecast;
+import fr.eletutour.eweather.exceptions.ApiError;
 import org.springframework.http.HttpStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,5 +45,21 @@ public class StepDefsIntegrationTest extends SpringIntegrationTest {
         assertThat(f.getCurrently()).isNotNull();
         assertThat(f.getDaily()).isNotNull();
         assertThat(f.getHourly()).isNotNull();
+    }
+
+    @When("^the client call /eweather/forecast\\?location=$")
+    public void the_client_call_eweather_forecast_location() throws Throwable {
+        executeGet("http://localhost:8080/eweather/forecast?location=");
+    }
+
+    @Then("^I receive an error Response$")
+    public void i_receive_an_error_Response() throws Throwable {
+        String responseBody = latestResponse.getBody();
+        Gson g = new Gson();
+        ApiError error = g.fromJson(responseBody, ApiError.class);
+        assertThat(error).isNotNull();
+        assertThat(error.getStatus()).isNotNull().isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(error.getMessage()).isNotNull().isNotEmpty().isEqualTo("Une erreur concernant la location est survenue.");
+        assertThat(error.getDebugMessage()).isNotNull().isNotEmpty();
     }
 }
