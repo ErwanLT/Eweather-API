@@ -20,6 +20,7 @@ public class DataPoint {
     private Integer windBearing;
     private Double windGust;
     private Double pressure;
+    private Integer uvIndex;
     private Double cloudCover;
     private Double ozone;
     private Double visibility;
