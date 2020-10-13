@@ -24,6 +24,17 @@ public class GsonService implements IGsonService {
     }
 
     @Override
+    public LocationData stringToLocationReverse(String locationIQResponse) throws LocationIssueException {
+        Gson g = new Gson();
+        if (locationIQResponse.contains("error")) {
+            LocationError error = g.fromJson(locationIQResponse, LocationError.class);
+            log.debug(error.getError());
+            throw new LocationIssueException(error.getError());
+        }
+        return g.fromJson(locationIQResponse, LocationData.class);
+    }
+
+    @Override
     public Forecast stringToForecast(String darkSkyResponse) {
         Gson g = new Gson();
         return g.fromJson(darkSkyResponse, Forecast.class);

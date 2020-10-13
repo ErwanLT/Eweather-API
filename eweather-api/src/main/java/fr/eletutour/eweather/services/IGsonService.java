@@ -16,5 +16,7 @@ public interface IGsonService {
 
     LocationData[] stringToLocations(String locationIQResponse) throws LocationIssueException;
 
+    LocationData stringToLocationReverse(String locationIQResponse) throws LocationIssueException;
+
     Forecast stringToForecast(String darkSkyResponse);
 }

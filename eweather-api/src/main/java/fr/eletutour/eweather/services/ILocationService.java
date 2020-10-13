@@ -10,4 +10,6 @@ package fr.eletutour.eweather.services;
 public interface ILocationService {
 
     String callApi(String location);
+
+    String callApi(String latitude, String longitude);
 }

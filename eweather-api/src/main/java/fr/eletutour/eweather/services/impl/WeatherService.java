@@ -45,13 +45,23 @@ public class WeatherService implements IWeatherService {
             log.info(locationIQResponse);
 
             if (locationIQResponse.isEmpty()) {
-                log.debug("offline mode activate");
                 throw new LocationIssueException("L'appel à LocationIQ n'a remonté aucun résultat.");
             } else {
                 LocationData[] ld = gsonService.stringToLocations(locationIQResponse);
                 LocationData l = ld[0];
                 return getForecast(l.getLat(), l.getLon(), l.getDisplayName());
             }
+        }
+    }
+
+    @Override
+    public Forecast getForecast(String latitude, String longitude) throws Exception {
+        String locationIQResponse = locationIQService.callApi(latitude, longitude);
+        if (locationIQResponse.isEmpty()) {
+            throw new LocationIssueException("L'appel à LocationIQ n'a remonté aucun résultat.");
+        } else {
+            LocationData ld = gsonService.stringToLocationReverse(locationIQResponse);
+            return getForecast(latitude, longitude, ld.getDisplayName());
         }
     }
 

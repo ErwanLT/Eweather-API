@@ -17,6 +17,10 @@ public class LocationIQService implements ILocationService {
     @Override
     public String callApi(String location) {
         return apiService.callApiWithUrl(Constants.getLocationiqUrl(location));
+    }
 
+    @Override
+    public String callApi(String latitude, String longitude) {
+        return apiService.callApiWithUrl(Constants.getLocationReverseGeocoding(latitude, longitude));
     }
 }

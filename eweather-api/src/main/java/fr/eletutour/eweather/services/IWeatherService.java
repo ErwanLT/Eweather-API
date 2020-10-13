@@ -12,4 +12,6 @@ import fr.eletutour.eweather.dto.Forecast;
 public interface IWeatherService {
 
     Forecast getForecast(String location) throws Exception;
+
+    Forecast getForecast(String latitude, String longitude) throws Exception;
 }

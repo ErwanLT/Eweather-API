@@ -42,4 +42,11 @@ public class EweatherAPIController {
     public ResponseEntity getWeather(@RequestParam(name = "location") String location) throws Exception {
         return new ResponseEntity(weatherService.getForecast(location), HttpStatus.OK);
     }
+
+    @GetMapping("/forecastLocation")
+    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"}, allowedHeaders = "*")
+    public ResponseEntity getWeather(@RequestParam(name = "latitude")String latitude,
+                                     @RequestParam(name = "longitude")String longitude) throws Exception{
+        return new ResponseEntity(weatherService.getForecast(latitude, longitude), HttpStatus.OK);
+    }
 }
