@@ -20,10 +20,4 @@ public class DarkSkyService implements IDarkSkyService {
         return apiService.callApiWithUrl(Constants.getDarkSkyUrl(latitude, longitude));
 
     }
-
-    @Override
-    public String callApi(String latitude, String longitude, Date date) {
-        Long time = date.getTime() / 1000;
-        return apiService.callApiWithUrl(Constants.getDarkSkyUrl(latitude, longitude, time));
-    }
 }
