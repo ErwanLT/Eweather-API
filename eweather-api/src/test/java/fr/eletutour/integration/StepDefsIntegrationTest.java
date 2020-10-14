@@ -1,4 +1,4 @@
-package fr.eletutour;
+package fr.eletutour.integration;
 
 import com.google.gson.Gson;
 import cucumber.api.java.en.Then;
@@ -13,6 +13,10 @@ import static org.hamcrest.Matchers.is;
 
 public class StepDefsIntegrationTest extends SpringIntegrationTest {
 
+    private static final String urlLocation = "http://localhost:8080/eweather/forecast?location=";
+
+    private static final String urlGeolocation = "http://localhost:8080/eweather/forecastLocation?";
+
     @When("^the client call /eweather/toto$")
     public void the_client_call_eweather_toto() throws Throwable {
         executeGet("http://localhost:8080/eweather/toto");
@@ -24,9 +28,14 @@ public class StepDefsIntegrationTest extends SpringIntegrationTest {
         assertThat("status code is incorrect : " + latestResponse.getBody(), currentStatusCode.value(), is(statusCode));
     }
 
-    @When("^the client call /eweather/forecast\\?location=Paris$")
-    public void the_client_call_eweather_forecast_location_Paris() throws Throwable {
-        executeGet("http://localhost:8080/eweather/forecast?location=Paris");
+    @When("^the client call the API with location \"([^\"]*)\"$")
+    public void the_client_call_the_API_with_location(String location) throws Throwable {
+        executeGet(urlLocation + location);
+    }
+
+    @When("^the client call the API with latitude \"([^\"]*)\" and longitude \"([^\"]*)\"$")
+    public void the_client_call_the_API_with_latitude_and_longitude(String latitude, String longitude) throws Throwable {
+        executeGet(urlGeolocation + "latitude="+latitude + "&longitude="+longitude);
     }
 
     @Then("^the client receive status code of (\\d+)$")
@@ -41,15 +50,10 @@ public class StepDefsIntegrationTest extends SpringIntegrationTest {
         Gson g = new Gson();
         Forecast f = g.fromJson(responseBody, Forecast.class);
         assertThat(f).isNotNull();
-        assertThat(f.getLocation()).isNotNull().isNotEmpty().contains("Paris");
+        assertThat(f.getLocation()).isNotNull().isNotEmpty();
         assertThat(f.getCurrently()).isNotNull();
         assertThat(f.getDaily()).isNotNull();
         assertThat(f.getHourly()).isNotNull();
-    }
-
-    @When("^the client call /eweather/forecast\\?location=$")
-    public void the_client_call_eweather_forecast_location() throws Throwable {
-        executeGet("http://localhost:8080/eweather/forecast?location=");
     }
 
     @Then("^I receive an error Response$")

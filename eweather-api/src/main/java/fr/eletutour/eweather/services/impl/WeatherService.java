@@ -10,6 +10,7 @@ import fr.eletutour.eweather.services.IWeatherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
  * @author ewanletutour
@@ -56,6 +57,9 @@ public class WeatherService implements IWeatherService {
 
     @Override
     public Forecast getForecast(String latitude, String longitude) throws Exception {
+        if(StringUtils.isEmpty(latitude) || StringUtils.isEmpty(longitude)){
+            throw new LocationIssueException("Veuillez renseignez les paramètres latitude et longitude.");
+        }
         String locationIQResponse = locationIQService.callApi(latitude, longitude);
         if (locationIQResponse.isEmpty()) {
             throw new LocationIssueException("L'appel à LocationIQ n'a remonté aucun résultat.");

@@ -44,6 +44,12 @@ public class EweatherAPIController {
     }
 
     @GetMapping("/forecastLocation")
+    @ApiOperation(value = "Get the weather forecast for the latitude and the longitude",
+            produces = "application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "operation created", response = Forecast.class),
+            @ApiResponse(code = 500, message = "An error occured")
+    })
     @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"}, allowedHeaders = "*")
     public ResponseEntity getWeather(@RequestParam(name = "latitude")String latitude,
                                      @RequestParam(name = "longitude")String longitude) throws Exception{

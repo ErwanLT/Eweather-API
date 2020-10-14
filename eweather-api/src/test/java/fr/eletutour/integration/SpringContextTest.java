@@ -1,4 +1,4 @@
-package fr.eletutour;
+package fr.eletutour.integration;
 
 import fr.eletutour.eweather.EweatherAPIApplication;
 import org.junit.Test;
@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EweatherAPIApplication.class)
-
 public class SpringContextTest {
 
     @Test

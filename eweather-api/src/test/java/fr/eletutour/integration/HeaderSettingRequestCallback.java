@@ -1,4 +1,4 @@
-package fr.eletutour;
+package fr.eletutour.integration;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.ClientHttpRequest;
