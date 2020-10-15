@@ -1,4 +1,4 @@
-package fr.eletutour.integration;
+package fr.eletutour.integration.steps;
 
 import com.google.gson.Gson;
 import cucumber.api.java.en.Then;

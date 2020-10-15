@@ -1,7 +1,8 @@
-package fr.eletutour.integration;
+package fr.eletutour.integration.configuration;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+import fr.eletutour.integration.steps.SpringIntegrationTest;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)

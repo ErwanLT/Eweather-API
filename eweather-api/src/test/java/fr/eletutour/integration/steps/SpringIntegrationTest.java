@@ -1,4 +1,4 @@
-package fr.eletutour.integration;
+package fr.eletutour.integration.steps;
 
 import fr.eletutour.eweather.EweatherAPIApplication;
 import org.springframework.boot.test.context.SpringBootTest;

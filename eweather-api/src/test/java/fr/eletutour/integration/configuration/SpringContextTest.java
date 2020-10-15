@@ -1,4 +1,4 @@
-package fr.eletutour.integration;
+package fr.eletutour.integration.configuration;
 
 import fr.eletutour.eweather.EweatherAPIApplication;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package fr.eletutour.integration;
+package fr.eletutour.integration.steps;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.client.ClientHttpResponse;
