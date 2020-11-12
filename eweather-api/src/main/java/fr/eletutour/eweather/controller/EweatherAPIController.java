@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/eweather")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class EweatherAPIController {
 
@@ -38,9 +39,8 @@ public class EweatherAPIController {
             @ApiResponse(code = 500, message = "An error occured")
     }
     )
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"}, allowedHeaders = "*")
-    public ResponseEntity getWeather(@RequestParam(name = "location") String location) throws Exception {
-        return new ResponseEntity(weatherService.getForecast(location), HttpStatus.OK);
+    public Forecast getWeather(@RequestParam(name = "location") String location) throws Exception {
+        return weatherService.getForecast(location);
     }
 
     @GetMapping("/forecastLocation")
@@ -50,9 +50,8 @@ public class EweatherAPIController {
             @ApiResponse(code = 200, message = "operation created", response = Forecast.class),
             @ApiResponse(code = 500, message = "An error occured")
     })
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"}, allowedHeaders = "*")
-    public ResponseEntity getWeather(@RequestParam(name = "latitude")String latitude,
+    public Forecast getWeather(@RequestParam(name = "latitude")String latitude,
                                      @RequestParam(name = "longitude")String longitude) throws Exception{
-        return new ResponseEntity(weatherService.getForecast(latitude, longitude), HttpStatus.OK);
+        return weatherService.getForecast(latitude, longitude);
     }
 }
