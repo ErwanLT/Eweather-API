@@ -1,0 +1,153 @@
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <span class="bold-span">{{daily.summary}}</span>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <div *ngFor="let dailyData of daily.data">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <img src='{{ "/assets/img/weatherIcon/" + dailyData.icon + ".png" }}' class="img-small"/>
+              {{dailyData.time*1000 | date:'dd/MM/yyyy'}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="bold-span"> {{dailyData.summary}} </span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <span style="font-size: 15px;font-weight: 600"> {{dailyData.summary}} </span>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col col-lg-3">
+                <img src='{{ "/assets/img/weatherIcon/" + dailyData.icon + ".png" }}' class="img-big"/>
+              </div>
+              <div class="col-lg-1"></div>
+              <div class="col col-lg-8">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <span class="bold-span">Minimal:</span>
+                      {{dailyData.temperatureMin}}°C
+                    </div>
+                    <div class="col">
+                      <span class="bold-span">Maximal:</span>
+                      {{dailyData.temperatureMax}}°C
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col">
+                      <img style="width:30px; height:30px" src="/assets/img/unitIcon/sunrise.png">
+                      {{dailyData.sunriseTime*1000 | date:'HH:mm:ss'}}
+                    </div>
+                    <div class="col">
+                      <img style="width:30px; height:30px" src="/assets/img/unitIcon/sunset.png">
+                      {{dailyData.sunsetTime*1000 | date:'HH:mm:ss'}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col">
+                      <span class="bold-span">Couverture Nuageuse:</span>
+                      {{dailyData.cloudCover}}%
+                    </div>
+                    <div class="col">
+                      <span class="bold-span">Phase lunaire:</span>
+                      <span *ngIf="dailyData.moonPhase==0">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon1.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase>0 && dailyData.moonPhase<0.25">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon2.png">
+                      </span>
+                      <span *ngIf="dailyData==0.25">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon3.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase>0.25 && dailyData.moonPhase<0.5">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon4.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase==0.5">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon5.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase>0.5 && dailyData.moonPhase<0.75">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon6.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase==0.75">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon7.png">
+                      </span>
+                      <span *ngIf="dailyData.moonPhase>0.75">
+                        <img class="moonPhase" src="assets/img/moonPhase/moon8.png">
+                      </span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col">
+                      <span class="bold-span">Vent:</span>
+                      {{dailyData.windSpeed}}Km/h
+                    </div>
+                    <div class="col">
+                      <span class="bold-span">Pluie:</span>
+                      {{dailyData.precipIntensity}}mm
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col">
+                      <span class="bold-span">indice UV:</span>
+                      <span *ngIf="dailyData.uvIndex <= 2" class="uv-low">
+                            {{dailyData.uvIndex}}
+                          </span>
+                      <span *ngIf="dailyData.uvIndex > 2 && dailyData.uvIndex <= 5" class="uv-moderate">
+                            {{dailyData.uvIndex}}
+                          </span>
+                      <span *ngIf="dailyData.uvIndex > 5 && dailyData.uvIndex <= 7" class="uv-hight">
+                            {{dailyData.uvIndex}}
+                          </span>
+                      <span *ngIf="dailyData.uvIndex > 7 && dailyData.uvIndex <=10" class="uv-very-hight">
+                            {{dailyData.uvIndex}}
+                          </span>
+                      <span *ngIf="dailyData.uvIndex > 10" class="uv-extrem">
+                            {{dailyData.uvIndex}}
+                          </span>
+                    </div>
+                    <div class="col">
+                      <span class="bold-span">Visibilité:</span>
+                      {{dailyData.visibility}}+km
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col">
+                      <span class="bold-span">Pression: </span>
+                      {{dailyData.pressure}}hPa
+                    </div>
+                    <div class="col">
+                      <span class="bold-span">Humidité: </span>
+                      {{dailyData.humidity}}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

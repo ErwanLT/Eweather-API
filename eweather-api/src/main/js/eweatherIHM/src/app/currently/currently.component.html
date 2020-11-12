@@ -1,0 +1,86 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mb-4"></div>
+    <div class="col-md-8 mb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-4">
+            <img src='{{ "/assets/img/weatherIcon/" + currently.icon + ".png" }}' class="img-big"/>
+          </div>
+          <div class="col col-lg-8">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm" style="font-size: 25px;font-weight: 600">
+                  {{currently.temperature}}°C
+                </div>
+                <div class="col-sm" style="font-size: 25px;font-weight: 600">
+                  {{currently.summary}}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <span class="bold-span">Ressentie:</span>
+                  {{currently.apparentTemperature}}°C
+                </div>
+                <div class="col">
+                  <span class="bold-span">Couverture Nuageuse:</span>
+                  {{currently.cloudCover}}%
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <span class="bold-span">Vent:</span>
+                  {{currently.windSpeed}}Km/h
+                </div>
+                <div class="col">
+                  <span class="bold-span">Pluie:</span>
+                  {{currently.precipIntensity}}mm
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <span class="bold-span">indice UV:</span>
+                  <span *ngIf="currently.uvIndex <= 2" class="uv-low">
+                            {{currently.uvIndex}}
+                          </span>
+                  <span *ngIf="currently.uvIndex > 2 && currently.uvIndex <= 5" class="uv-moderate">
+                            {{currently.uvIndex}}
+                          </span>
+                  <span *ngIf="currently.uvIndex > 5 && currently.uvIndex <= 7" class="uv-hight">
+                            {{currently.uvIndex}}
+                          </span>
+                  <span *ngIf="currently.uvIndex > 7 && currently.uvIndex <=10" class="uv-very-hight">
+                            {{currently.uvIndex}}
+                          </span>
+                  <span *ngIf="currently.uvIndex > 10" class="uv-extrem">
+                            {{currently.uvIndex}}
+                          </span>
+                </div>
+                <div class="col">
+                  <span class="bold-span">Visibilité:</span>
+                  {{currently.visibility}}+km
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <span class="bold-span">Pression: </span>
+                  {{currently.pressure}}hPa
+                </div>
+                <div class="col">
+                  <span class="bold-span">Humidité: </span>
+                  {{currently.humidity}}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 mb-4"></div>
+  </div>
+</div>

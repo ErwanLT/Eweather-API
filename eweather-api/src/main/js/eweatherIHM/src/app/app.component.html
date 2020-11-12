@@ -1,0 +1,7 @@
+<app-form (forecast)="setForecast($event)"></app-form>
+
+<div *ngIf="display" class="container">
+  <app-forecast *ngIf="forecast" [forecast]="forecast"></app-forecast>
+</div>
+
+<app-footer></app-footer>
