@@ -1,7 +1,5 @@
 package fr.eletutour.eweather.services;
 
-import java.util.Date;
-
 /**
  * @author ewanletutour
  * @version 1.0.0
