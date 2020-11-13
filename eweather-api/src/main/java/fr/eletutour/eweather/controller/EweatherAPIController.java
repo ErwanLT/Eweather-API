@@ -29,7 +29,6 @@ public class EweatherAPIController {
         this.weatherService = weatherService;
     }
 
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
     @GetMapping("/forecast")
     @ApiOperation(value = "Get the weather forecast for a location",
             produces = "application/json")
@@ -42,7 +41,6 @@ public class EweatherAPIController {
         return weatherService.getForecast(location);
     }
 
-    @CrossOrigin("https://profile-analyzer.herokuapp.com")
     @GetMapping("/forecastLocation")
     @ApiOperation(value = "Get the weather forecast for the latitude and the longitude",
             produces = "application/json")
