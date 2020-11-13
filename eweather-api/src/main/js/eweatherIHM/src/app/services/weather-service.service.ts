@@ -14,8 +14,8 @@ export class WeatherServiceService {
   private weatherLocationURL: string;
 
   constructor(private http: HttpClient) {
-    this.weatherURL = 'http://localhost:8080/eweather/forecast?location=';
-    this.weatherLocationURL = 'http://localhost:8080/eweather/forecastLocation?';
+    this.weatherURL = '/eweather/forecast?location=';
+    this.weatherLocationURL = '/eweather/forecastLocation?';
   }
 
   public getWeather(location: string): Observable<Forecast> {
